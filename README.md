@@ -1,2 +1,2 @@
 # Coursework
-Assignments algorithms and computer graphics.
+Assignments for algorithms and computer graphics.
