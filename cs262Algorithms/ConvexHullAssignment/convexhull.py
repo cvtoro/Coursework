@@ -193,7 +193,7 @@ def grahamscan(listPts):
     for i in range(0,3):
         stack.append( (sortedPts[i][0], sortedPts[i][1]))
         chull.append(sortedPts[i][2])
-    
+     #loop through remaining points on sorted list to find sets of 3 points that for a counter-clowckwise line
     for i in range(3, n):
         pt =  (sortedPts[i][0],sortedPts[i][1])
 
@@ -208,8 +208,7 @@ def grahamscan(listPts):
 
 
 def distance(ptA, ptB, ptC):
-    """
-    computes the distance between line segment AB to a point C
+    """computes the distance between line segment AB to a point C
     """
     deltaABx = ptB[0]-ptA[0];
     deltaABy = ptB[1]-ptA[1];
@@ -241,10 +240,8 @@ def findMaxX(listPts):
     return xIndex
 
 def quickhull(ptA, ptB, set, rightIndexSet, chull):
+    """computes the furthest point to the right of A and B and adds its to the convex hull
     """
-    computes the furthest point to the right of A and B and adds its to the convex hull
-    """
-   
     i = 0
     furthestPtIn = -1
     if len(set) > 0:
@@ -332,17 +329,44 @@ def amethod(listPts):
     quickhull(ptB, ptA, leftSet, leftIndexSet, chull)
     chull = [str(x) for x in chull]
     return ' '.join(chull).strip()
-
+import os
 def main():
-    # listPts = readDataPts('Set_A/A_30000.dat')  
-    listPts = readDataPts('Set_A/A_9000.dat')  
-   
-    # print (grahamscan(listPts))   #with any code for validating your outputs
-    # print(giftwrap(listPts))      #You may replace these three print statements
+    #verifying all input files in set A and set B algorithm output against .out file data
+    directories = ['./Set_A/', './Set_B/']
+    data = True
 
-    print (amethod(listPts))      #using the data provided in .out files
+    for dir in directories:
+        for fn in os.listdir(dir):
+            if data:
+                print(dir + fn)
+                listPts = readDataPts(dir + fn)  
+                data = False
+            else:
+                filename = dir + fn
+                sol1  =  (sorted([int(x) for x in giftwrap(listPts).split(' ')]) )      
+                sol2  =  (sorted([int(x) for x in grahamscan(listPts).split(' ')]) )      
+                sol3  =  (sorted([int(x) for x in amethod(listPts).split(' ')]) )      
 
- 
+                f = open(filename, 'r')
+                l = f.read().strip('\r\n ').split(' ')
+                # print(l)
+
+                l = ([int(x) for x in l]) 
+                l = sorted(l)
+                if l == sol1:
+                    print True
+                else:
+                    print False
+                if l == sol2:
+                    print True
+                else:
+                    print False
+
+                if l == sol3:
+                    print True
+                else:
+                    print False            # providedrint(sorted(l))
+                data = True
 if __name__  ==  "__main__":
     main()
   
