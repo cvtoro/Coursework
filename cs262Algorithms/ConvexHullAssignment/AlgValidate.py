@@ -4,15 +4,7 @@ import time
 import plotly
 print plotly.__version__  # version >1.9.4 required
 
-# from plotly.graph_objs import Scatter, Layout
-# plotly.offline.plot({
-# "data": [
-#     Scatter(x=[1, 2, 3, 4], y=[4, 1, 3, 7])
-# ],
-# "layout": Layout(
-#     title="Graham Scan"
-# )
-# })
+
 files1 = ['Set_A/A_10.dat', 'Set_A/A_50.dat', 'Set_A/A_500.dat', 'Set_A/A_3000.dat', 'Set_A/A_6000.dat', 'Set_A/A_9000.dat', 'Set_A/A_15000.dat', 'Set_A/A_30000.dat']
 times1 = []
 print("grahamscan")

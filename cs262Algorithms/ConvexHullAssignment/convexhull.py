@@ -61,7 +61,6 @@ def theta(pointA, pointB):
      ''' Computes an approximation of the angle between
      the line AB and a horizontal line through A.
      '''
-     #report:modiified
      dx = pointB[0] - pointA[0]
      dy = pointB[1] - pointA[1]
      if abs(dx) < 1.e-6 and abs(dy) < 1.e-6:
@@ -106,13 +105,11 @@ def giftwrap(listPts):
                 k = j
         i += 1
         v = minAngle
-        
-    #report:useful
+
     chull = [str(x) for x in chull]
 
     return ' '.join(chull[0:i]).strip()
 
-#report: use of merge sort, modification
 def merge_sort(list, p0):
     """
     merge sort algorithm for sorting based on angle
@@ -164,7 +161,6 @@ def isCCW(ptA, ptB, ptC):
  """
  return lineFn(ptA, ptB, ptC) > 0
 
-#report, used this function
 def addIndex(listPts):
     """
     add index of each point as a third parameter to the tuple to perserve order of indeces
@@ -367,6 +363,9 @@ def main():
                 else:
                     print False            # providedrint(sorted(l))
                 data = True
+
+
+
 if __name__  ==  "__main__":
     main()
   
